@@ -32,6 +32,8 @@ ENV VLLM_HOST=127.0.0.1
 ENV TENSOR_PARALLEL_SIZE=4
 
 # NCCL settings for multi-GPU communication
+# Disable NVLS (NVLink SHARP) - causes "invalid argument" errors in containers
+ENV NCCL_NVLS_ENABLE=0
 # Disable P2P if GPUs can't communicate directly
 ENV NCCL_P2P_DISABLE=1
 # Disable InfiniBand (not available in most cloud setups)
